@@ -1,0 +1,159 @@
+﻿@model venerdi_28_06.Models.Prodotto
+
+@{
+    ViewData["Title"] = @Model?.Nome ?? "Prodotto non trovato";
+}
+
+<style>
+
+    .card {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .card img {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .card h1 {
+        margin: 10px 0;
+    }
+
+    .card p {
+        font-weight: bold;
+    }
+
+    .card a {
+        display: block;
+        margin-top: 10px;
+        padding: 5px;
+        background-color: #3e2981;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+
+    .card a:active {
+        background-color: green;
+    }
+
+    .card-footer {
+        margin-top: 10px;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .card-header {
+        background-color: #3e2981;
+        color: white;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .card-footer {
+        background-color: #3e2981;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    .row {
+        margin-top: 10px;
+    }
+
+    .col-md-4 {
+        padding: 5px;
+    }
+
+    .img-fluid {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .btn {
+        background-color: #3e2981;
+        color: white;
+        text-decoration: none;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .btn:active {
+        background-color: green;
+    }
+
+    .btn:hover {
+        background-color: #3e2981;
+    }
+
+    .btn:visited {
+        color: white;
+    }
+
+    header {
+        background-color: #3e2981;
+        color: white;
+    }
+    
+
+    nav {
+        background-color: #3e2981;
+    }
+
+    #btna {
+        background-color: #3e2981;
+        color: white;
+    }
+
+    footer {
+        background-color: #3e2981;
+        color: white;
+    }
+
+    footer a {
+        color: white;
+    }
+</style>
+
+<div class="container">
+    @if (Model == null)
+    {
+        <h1>Prodotto non trovato</h1>
+        <a href="@Url.Action("Index", "Prodotti")">Torna alla vetrina</a>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Nome</h1>
+            </div>
+            <div class="card-body">
+                <p class="card-text">@Model.Descrizione</p>
+                <p class="card-text">Prezzo: @Model.Prezzo €</p>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="@Model.ImmagineCopertina" alt="Copertina" class="img-fluid" />
+                    </div>
+                    <div class="col-md-4">
+                        <img src="@Model.ImmagineAggiuntiva1" alt="Immagine 1" class="img-fluid" />
+                    </div>
+                    <div class="col-md-4">
+                        <img src="@Model.ImmagineAggiuntiva2" alt="Immagine 2" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("Index", "Prodotti")" class="btn">Torna alla vetrina</a>
+            </div>
+        </div>
+    }
+</div>

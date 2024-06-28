@@ -1,0 +1,101 @@
+﻿@model IEnumerable<venerdi_28_06.Models.Prodotto>
+
+@{
+    ViewData["Title"] = "Vetrina Prodotti";
+}
+
+<style>
+
+    h1 {
+        text-align: center;
+        color: white;
+    }
+
+    .vetrina {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .prodotto {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 200px;
+        text-align: center;
+    }
+
+    .prodotto img {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .prodotto h2 {
+        margin: 10px 0;
+    }
+
+    .prodotto p {
+        font-weight: bold;
+    }
+
+    .prodotto a {
+        display: block;
+        margin-top: 10px;
+        padding: 5px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .prodotto a:hover {
+        background-color: #0056b3;
+    }
+
+    .prodotto a:active {
+        background-color: #004286;
+    }
+
+    #logo {
+        width: 100px;
+    }
+
+    nav {
+        background-color: #3e2981;
+    }
+    
+    #btna {
+        background-color: #3e2981;
+        color: white;
+    }
+
+
+    
+</style>
+
+<h1>Vetrina Prodotti</h1>
+
+@if (!Model.Any())
+{
+    <p>Nessun prodotto disponibile.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var prodotto in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="@prodotto.ImmagineCopertina" class="card-img-top" alt="@prodotto.Nome">
+                    <div class="card-body">
+                        <h5 class="card-title">@prodotto.Nome</h5>
+                        <p class="card-text">@prodotto.Descrizione</p>
+                        <p class="card-text">Prezzo: @prodotto.Prezzo €</p>
+                        <a href="@Url.Action("Dettagli", "Prodotti", new { id = prodotto.Id })" class="btn" id="btna">Dettagli</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
